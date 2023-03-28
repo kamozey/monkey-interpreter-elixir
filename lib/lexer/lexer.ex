@@ -44,10 +44,10 @@ defmodule Lexer do
       string_value
       |> TokenType.tokenize_letters()
 
-    {:ok, token, lexer.position + skip + 1}
+    {:ok, token, lexer.position + skip}
   end
 
-  def tokenize(char, lexer = %Lexer{}) when char >= "0" and char <= "9" do
+  def tokenize(char, lexer = %Lexer{}) when (char >= "0" and char <= "9") do
     [string_value, skip] =
       Enum.reduce_while(lexer.position..lexer.input_length, ["", 0], fn ch, [acc, skip] ->
         char = String.at(lexer.input, ch)
@@ -62,7 +62,7 @@ defmodule Lexer do
       string_value
       |> TokenType.tokenize_digits()
 
-    {:ok, token, lexer.position + skip + 1}
+    {:ok, token, lexer.position + skip}
   end
 
   def tokenize(char, lexer = %Lexer{}) do
