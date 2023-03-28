@@ -21,6 +21,5 @@ defmodule ElixirCompiler do
 
     lexer
     |> Lexer.parse_input()
-    |> IO.inspect()
   end
 end

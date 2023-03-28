@@ -27,8 +27,6 @@ defmodule Lexer do
 
   def tokenize(char, lexer = %Lexer{})
       when (char >= "a" and char <= "z") or (char >= "A" and char <= "Z") do
-    IO.puts("encountered a lettered string")
-
     [string_value, skip] =
       Enum.reduce_while(lexer.position..lexer.input_length, ["", 0], fn ch, [acc, skip] ->
         char = String.at(lexer.input, ch)
@@ -50,20 +48,21 @@ defmodule Lexer do
   end
 
   def tokenize(char, lexer = %Lexer{}) when char >= "0" and char <= "9" do
-    IO.puts("encountered a digit")
-
-    token =
-      Enum.reduce_while(lexer.position..lexer.input_length, "", fn ch, acc ->
+    [string_value, skip] =
+      Enum.reduce_while(lexer.position..lexer.input_length, ["", 0], fn ch, [acc, skip] ->
         char = String.at(lexer.input, ch)
 
         cond do
-          char >= "0" && char <= "9" -> {:cont, acc <> char}
-          true -> {:halt, acc}
+          char >= "0" && char <= "9" -> {:cont, [acc <> char, skip+1]}
+          true -> {:halt, [acc, skip]}
         end
       end)
+
+    token =
+      string_value
       |> TokenType.tokenize_digits()
 
-    {:ok, token, lexer.position + String.length(token.value) + 1}
+    {:ok, token, lexer.position + skip + 1}
   end
 
   def tokenize(char, lexer = %Lexer{}) do

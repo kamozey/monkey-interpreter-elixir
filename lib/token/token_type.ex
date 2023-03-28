@@ -21,8 +21,8 @@ defmodule TokenType do
   end
 
   def tokenize_digits(string_value) do
-    # %Token{type: :int, value: Integer.parse(string_value)}
-    %Token{type: :int, value: string_value}
+    {int, _} = Integer.parse(string_value)
+    %Token{type: :int, value: int}
   end
 
   def tokenize(char) when char == "=" do
@@ -58,6 +58,10 @@ defmodule TokenType do
   end
 
   def tokenize(char) when char == " " or char == "\n" or char == "\r" or char == "\t" do
+  end
+
+  def tokenize(char) when char == nil do
+    %Token{type: :eof}
   end
 
   def tokenize(char) do
