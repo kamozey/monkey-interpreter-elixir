@@ -47,13 +47,13 @@ defmodule Lexer do
     {:ok, token, lexer.position + skip}
   end
 
-  def tokenize(char, lexer = %Lexer{}) when (char >= "0" and char <= "9") do
+  def tokenize(char, lexer = %Lexer{}) when char >= "0" and char <= "9" do
     [string_value, skip] =
       Enum.reduce_while(lexer.position..lexer.input_length, ["", 0], fn ch, [acc, skip] ->
         char = String.at(lexer.input, ch)
 
         cond do
-          char >= "0" && char <= "9" -> {:cont, [acc <> char, skip+1]}
+          char >= "0" && char <= "9" -> {:cont, [acc <> char, skip + 1]}
           true -> {:halt, [acc, skip]}
         end
       end)
@@ -67,10 +67,26 @@ defmodule Lexer do
 
   def tokenize(char, lexer = %Lexer{}) do
     token = TokenType.tokenize(char)
+    next_char = String.at(lexer.input, lexer.position + 1)
 
     case token do
-      nil -> {:ok, nil, lexer.position + 1}
-      _ -> {:ok, token, lexer.position + 1}
+      {:ok, token} ->
+        {:ok, token, lexer.position + 1}
+
+      {:peekahead, token} ->
+        case TokenType.tokenize(next_char, token, :peekahead) do
+          {:peeked, token, skip} -> {:ok, token, lexer.position + 1 + skip}
+          _ -> {:ok, nil, lexer.position + 1}
+        end
+
+      {:peeked, token, skip} ->
+        {:ok, token, lexer.position + 1 + skip}
+
+      nil ->
+        {:ok, nil, lexer.position + 1}
+
+      _ ->
+        {:ok, token, lexer.position + 1}
     end
   end
 end

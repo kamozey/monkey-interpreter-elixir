@@ -18,6 +18,8 @@
   }
   10 == 10;
   10 != 9;
+  102 >= 1;
+  1 <= 21;
 
 --- Code End
 
@@ -89,14 +91,20 @@
 %Token{type: :semicolon, value: ;}
 %Token{type: :rbrace, value: }}
 %Token{type: :int, value: 10}
-%Token{type: :assign, value: =}
-%Token{type: :assign, value: =}
+%Token{type: :eq, value: ==}
 %Token{type: :int, value: 10}
 %Token{type: :semicolon, value: ;}
 %Token{type: :int, value: 10}
-%Token{type: :bang, value: !}
-%Token{type: :assign, value: =}
+%Token{type: :neq, value: !=}
 %Token{type: :int, value: 9}
+%Token{type: :semicolon, value: ;}
+%Token{type: :int, value: 102}
+%Token{type: :gte, value: >=}
+%Token{type: :int, value: 1}
+%Token{type: :semicolon, value: ;}
+%Token{type: :int, value: 1}
+%Token{type: :lte, value: <=}
+%Token{type: :int, value: 21}
 %Token{type: :semicolon, value: ;}
 %Token{type: :eof, value: }
 

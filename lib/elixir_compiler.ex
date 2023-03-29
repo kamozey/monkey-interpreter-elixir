@@ -28,6 +28,8 @@ defmodule ElixirCompiler do
       }
       10 == 10;
       10 != 9;
+      102 >= 1;
+      1 <= 21;
     """
   end
 
