@@ -7,6 +7,11 @@ defmodule TokenType do
     map_set
     |> MapSet.put(:let)
     |> MapSet.put(:fn)
+    |> MapSet.put(:true)
+    |> MapSet.put(:false)
+    |> MapSet.put(:return)
+    |> MapSet.put(:if)
+    |> MapSet.put(:else)
   end
 
   def tokenize_letters(string_value) do
@@ -57,11 +62,35 @@ defmodule TokenType do
     %Token{type: :plus, value: char}
   end
 
+  def tokenize(char) when char == "-" do
+    %Token{type: :minus, value: "-"}
+  end
+
+  def tokenize(char) when char == "*" do
+    %Token{type: :asterisk, value: "*"}
+  end
+
+  def tokenize(char) when char == "<" do
+    %Token{type: :lt, value: "<"}
+  end
+
+  def tokenize(char) when char == ">" do
+    %Token{type: :gt, value: ">"}
+  end
+
+  def tokenize(char) when char == "/" do
+    %Token{type: :slash, value: "/"}
+  end
+
   def tokenize(char) when char == " " or char == "\n" or char == "\r" or char == "\t" do
   end
 
   def tokenize(char) when char == nil do
     %Token{type: :eof}
+  end
+
+  def tokenize(char) when char == "!" do
+    %Token{type: :bang, value: "!"}
   end
 
   def tokenize(char) do
