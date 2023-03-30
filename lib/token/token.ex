@@ -6,4 +6,9 @@ defmodule Token do
       "%Token{type: :#{token.type}, value: #{token.value}}"
     end
   end
+
+  @type t :: %__MODULE__{
+    type: String.t(),
+    value: any()
+  }
 end
