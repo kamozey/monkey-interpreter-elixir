@@ -1,7 +1,5 @@
 defmodule Writer do
   def write_to_file(tokens, code_string, path) do
-    # IO.inspect(Path.absname(path))
-    # File.mkdir_p(Path.dirname(path))
     {:ok, file} = File.open(Path.absname(path), [:write, :bianry])
     IO.puts(file, "--- Code Start:\n")
     IO.puts(file, code_string)
@@ -9,6 +7,9 @@ defmodule Writer do
     IO.puts(file, "--- Tokens Start: \n")
     token_print(tokens, file)
     File.close(file)
+
+    # return tokens
+    tokens
   end
 
   def token_print([token | rest], file) do

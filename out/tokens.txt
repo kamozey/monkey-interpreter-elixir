@@ -1,110 +1,27 @@
 --- Code Start:
 
-  let five = 5;
-  let ten = 1012389;
-
-  let add = fn(x,y) {
-    x+y;
-  };
-
-  let result = add(five, ten);
-
-  !-/*5;
-  5 < 10 > 5;
-  if (5 < 10) {
-  return true;
-  } else {
-  return false;
-  }
-  10 == 10;
-  10 != 9;
-  102 >= 1;
-  1 <= 21;
+let x = 5;
+let y = 10;
+let foobar = 838383;
 
 --- Code End
 
 --- Tokens Start: 
 
 %Token{type: :let, value: let}
-%Token{type: :ident, value: five}
-%Token{type: :assign, value: =}
-%Token{type: :int, value: 5}
-%Token{type: :semicolon, value: ;}
-%Token{type: :let, value: let}
-%Token{type: :ident, value: ten}
-%Token{type: :assign, value: =}
-%Token{type: :int, value: 1012389}
-%Token{type: :semicolon, value: ;}
-%Token{type: :let, value: let}
-%Token{type: :ident, value: add}
-%Token{type: :assign, value: =}
-%Token{type: :fn, value: fn}
-%Token{type: :lparen, value: (}
 %Token{type: :ident, value: x}
-%Token{type: :comma, value: ,}
-%Token{type: :ident, value: y}
-%Token{type: :rparen, value: )}
-%Token{type: :lbrace, value: {}
-%Token{type: :ident, value: x}
-%Token{type: :plus, value: +}
-%Token{type: :ident, value: y}
-%Token{type: :semicolon, value: ;}
-%Token{type: :rbrace, value: }}
+%Token{type: :assign, value: =}
+%Token{type: :int, value: 5}
 %Token{type: :semicolon, value: ;}
 %Token{type: :let, value: let}
-%Token{type: :ident, value: result}
+%Token{type: :ident, value: y}
 %Token{type: :assign, value: =}
-%Token{type: :ident, value: add}
-%Token{type: :lparen, value: (}
-%Token{type: :ident, value: five}
-%Token{type: :comma, value: ,}
-%Token{type: :ident, value: ten}
-%Token{type: :rparen, value: )}
-%Token{type: :semicolon, value: ;}
-%Token{type: :bang, value: !}
-%Token{type: :minus, value: -}
-%Token{type: :slash, value: /}
-%Token{type: :asterisk, value: *}
-%Token{type: :int, value: 5}
-%Token{type: :semicolon, value: ;}
-%Token{type: :int, value: 5}
-%Token{type: :lt, value: <}
-%Token{type: :int, value: 10}
-%Token{type: :gt, value: >}
-%Token{type: :int, value: 5}
-%Token{type: :semicolon, value: ;}
-%Token{type: :if, value: if}
-%Token{type: :lparen, value: (}
-%Token{type: :int, value: 5}
-%Token{type: :lt, value: <}
-%Token{type: :int, value: 10}
-%Token{type: :rparen, value: )}
-%Token{type: :lbrace, value: {}
-%Token{type: :return, value: return}
-%Token{type: :true, value: true}
-%Token{type: :semicolon, value: ;}
-%Token{type: :rbrace, value: }}
-%Token{type: :else, value: else}
-%Token{type: :lbrace, value: {}
-%Token{type: :return, value: return}
-%Token{type: :false, value: false}
-%Token{type: :semicolon, value: ;}
-%Token{type: :rbrace, value: }}
-%Token{type: :int, value: 10}
-%Token{type: :eq, value: ==}
 %Token{type: :int, value: 10}
 %Token{type: :semicolon, value: ;}
-%Token{type: :int, value: 10}
-%Token{type: :neq, value: !=}
-%Token{type: :int, value: 9}
-%Token{type: :semicolon, value: ;}
-%Token{type: :int, value: 102}
-%Token{type: :gte, value: >=}
-%Token{type: :int, value: 1}
-%Token{type: :semicolon, value: ;}
-%Token{type: :int, value: 1}
-%Token{type: :lte, value: <=}
-%Token{type: :int, value: 21}
+%Token{type: :let, value: let}
+%Token{type: :ident, value: foobar}
+%Token{type: :assign, value: =}
+%Token{type: :int, value: 838383}
 %Token{type: :semicolon, value: ;}
 %Token{type: :eof, value: }
 

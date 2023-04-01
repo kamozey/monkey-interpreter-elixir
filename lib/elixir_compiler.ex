@@ -1,6 +1,7 @@
 defmodule ElixirCompiler do
   alias Lexer
   alias Writer
+  alias Parser
 
   @output_tokens_path "out/tokens.txt"
 
@@ -33,13 +34,23 @@ defmodule ElixirCompiler do
     """
   end
 
+  def let_statements do
+    ~S"""
+    let x = 5;
+    let y = 10;
+    let foobar = 838383;
+    """
+  end
+
   def parse do
     lexer =
-      code_string()
+      let_statements()
       |> Lexer.new()
 
     lexer
     |> Lexer.parse_input()
-    |> Writer.write_to_file(code_string(), @output_tokens_path)
+    |> Writer.write_to_file(let_statements(), @output_tokens_path)
+    |> Parser.new()
+    |> Parser.parse_program()
   end
 end
